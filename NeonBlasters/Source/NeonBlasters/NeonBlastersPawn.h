@@ -22,6 +22,7 @@ class ANeonBlastersPawn : public APawn
 	class USpringArmComponent* SpringArm2;
 
 public:
+
 	ANeonBlastersPawn();
 
 	// Begin AActor overrides
@@ -46,4 +47,14 @@ private:
 	float UpVal;
 	float RightVal;
 
+public:
+
+	UPROPERTY(EditAnywhere)
+		TSubclassOf<class UStaticMesh> Test1;
+
+	UPROPERTY(EditAnywhere)
+		UStaticMeshComponent* Test2;
+
+	UPROPERTY(EditAnywhere)
+		TSubclassOf<class UStaticMeshComponent> Test3;
 };

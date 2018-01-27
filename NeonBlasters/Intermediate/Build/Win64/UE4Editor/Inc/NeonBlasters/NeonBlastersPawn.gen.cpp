@@ -17,8 +17,10 @@ void EmptyLinkFunctionForGeneratedCodeNeonBlastersPawn() {}
 	NEONBLASTERS_API UClass* Z_Construct_UClass_ANeonBlastersPawn();
 	ENGINE_API UClass* Z_Construct_UClass_APawn();
 	UPackage* Z_Construct_UPackage__Script_NeonBlasters();
-	ENGINE_API UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
+	COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
+	ENGINE_API UClass* Z_Construct_UClass_UStaticMesh_NoRegister();
+	ENGINE_API UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
 // End Cross Module References
 	void ANeonBlastersPawn::StaticRegisterNativesANeonBlastersPawn()
 	{
@@ -43,6 +45,28 @@ void EmptyLinkFunctionForGeneratedCodeNeonBlastersPawn() {}
 				{ "ModuleRelativePath", "NeonBlastersPawn.h" },
 			};
 #endif
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Test3_MetaData[] = {
+				{ "Category", "NeonBlastersPawn" },
+				{ "ModuleRelativePath", "NeonBlastersPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FClassPropertyParams NewProp_Test3 = { UE4CodeGen_Private::EPropertyClass::Class, "Test3", RF_Public|RF_Transient|RF_MarkAsNative, 0x0014000000000001, 1, nullptr, STRUCT_OFFSET(ANeonBlastersPawn, Test3), Z_Construct_UClass_UStaticMeshComponent_NoRegister, Z_Construct_UClass_UClass, METADATA_PARAMS(NewProp_Test3_MetaData, ARRAY_COUNT(NewProp_Test3_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Test2_MetaData[] = {
+				{ "Category", "NeonBlastersPawn" },
+				{ "EditInline", "true" },
+				{ "ModuleRelativePath", "NeonBlastersPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_Test2 = { UE4CodeGen_Private::EPropertyClass::Object, "Test2", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000080009, 1, nullptr, STRUCT_OFFSET(ANeonBlastersPawn, Test2), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(NewProp_Test2_MetaData, ARRAY_COUNT(NewProp_Test2_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Test1_MetaData[] = {
+				{ "Category", "NeonBlastersPawn" },
+				{ "ModuleRelativePath", "NeonBlastersPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FClassPropertyParams NewProp_Test1 = { UE4CodeGen_Private::EPropertyClass::Class, "Test1", RF_Public|RF_Transient|RF_MarkAsNative, 0x0014000000000001, 1, nullptr, STRUCT_OFFSET(ANeonBlastersPawn, Test1), Z_Construct_UClass_UStaticMesh_NoRegister, Z_Construct_UClass_UClass, METADATA_PARAMS(NewProp_Test1_MetaData, ARRAY_COUNT(NewProp_Test1_MetaData)) };
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_SpringArm2_MetaData[] = {
 				{ "AllowPrivateAccess", "true" },
@@ -73,6 +97,9 @@ void EmptyLinkFunctionForGeneratedCodeNeonBlastersPawn() {}
 #endif
 			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_PlaneMesh = { UE4CodeGen_Private::EPropertyClass::Object, "PlaneMesh", RF_Public|RF_Transient|RF_MarkAsNative, 0x00400000000b001d, 1, nullptr, STRUCT_OFFSET(ANeonBlastersPawn, PlaneMesh), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(NewProp_PlaneMesh_MetaData, ARRAY_COUNT(NewProp_PlaneMesh_MetaData)) };
 			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_Test3,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_Test2,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_Test1,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_SpringArm2,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_SpringArm,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_PlaneMesh,
@@ -95,7 +122,7 @@ void EmptyLinkFunctionForGeneratedCodeNeonBlastersPawn() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ANeonBlastersPawn, 3246244948);
+	IMPLEMENT_CLASS(ANeonBlastersPawn, 1189414452);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_ANeonBlastersPawn(Z_Construct_UClass_ANeonBlastersPawn, &ANeonBlastersPawn::StaticClass, TEXT("/Script/NeonBlasters"), TEXT("ANeonBlastersPawn"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(ANeonBlastersPawn);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

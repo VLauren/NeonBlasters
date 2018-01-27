@@ -31,8 +31,6 @@ void USpawner::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 
 void USpawner::Spawn()
 {
-	UE_LOG(LogTemp, Warning, TEXT("SPAWN"));
-
 	if (ToSpawn)
 	{
 		UWorld* world = GetWorld();

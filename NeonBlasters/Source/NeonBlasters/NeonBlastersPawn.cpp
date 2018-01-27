@@ -12,6 +12,7 @@
 ANeonBlastersPawn::ANeonBlastersPawn()
 {
 	// Structure to hold one-time initialization
+	/*
 	struct FConstructorStatics
 	{
 		ConstructorHelpers::FObjectFinderOptional<UStaticMesh> PlaneMesh;
@@ -21,10 +22,11 @@ ANeonBlastersPawn::ANeonBlastersPawn()
 		}
 	};
 	static FConstructorStatics ConstructorStatics;
+	*/
 
 	// Create static mesh component
 	PlaneMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("PlaneMesh0"));
-	PlaneMesh->SetStaticMesh(ConstructorStatics.PlaneMesh.Get());	// Set static mesh
+	// PlaneMesh->SetStaticMesh(ConstructorStatics.PlaneMesh.Get());	// Set static mesh
 	RootComponent = PlaneMesh;
 
 	// Create a spring arm component

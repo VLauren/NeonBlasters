@@ -2,6 +2,7 @@
 
 #include "MovimientoObjetoEscenario.h"
 
+const float VEL = 1000;
 
 // Sets default values for this component's properties
 UMovimientoObjetoEscenario::UMovimientoObjetoEscenario()
@@ -28,10 +29,10 @@ void UMovimientoObjetoEscenario::TickComponent(float DeltaTime, ELevelTick TickT
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	FVector LocalMove = FVector(0, 0, -1000 * DeltaTime);
+	FVector LocalMove = FVector(-VEL * DeltaTime, 0, 0);
 
-	// GetOwner()->AddActorLocalOffset(LocalMove, true);
-	UE_LOG(LogTemp, Warning, TEXT("KE %s"), *LocalMove.ToString());
+	GetOwner()->AddActorLocalOffset(LocalMove, true);
+	// UE_LOG(LogTemp, Warning, TEXT("KE %s"), *LocalMove.ToString());
 
 }
 

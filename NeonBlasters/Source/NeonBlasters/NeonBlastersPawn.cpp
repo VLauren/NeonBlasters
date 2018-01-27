@@ -53,13 +53,23 @@ ANeonBlastersPawn::ANeonBlastersPawn()
 
 void ANeonBlastersPawn::Tick(float DeltaSeconds)
 {
-	FVector LocalMove = FVector();
+	FVector LocalMove = FVector(0,0,0);
 
 	// ==================================
 
-	LocalMove += GetActorUpVector() * UpVal * 1000 * DeltaSeconds;
-	LocalMove += GetActorRightVector() * RightVal * 1000 * DeltaSeconds;
+	FVector Up = GetActorUpVector() * UpVal * 1000 * DeltaSeconds;
+	FVector Right = GetActorRightVector() * RightVal * 1000 * DeltaSeconds;
 
+	// LocalMove += GetActorUpVector() * UpVal * 1000 * DeltaSeconds;
+	// LocalMove += GetActorRightVector() * RightVal * 1000 * DeltaSeconds;
+
+	UE_LOG(LogTemp, Warning, TEXT("LMove A: %s"), *LocalMove.ToString());
+	LocalMove += Up;
+	LocalMove += Right;
+
+	UE_LOG(LogTemp, Warning, TEXT("LMove B: %s"), *LocalMove.ToString());
+	UE_LOG(LogTemp, Warning, TEXT("Up: %s"), *Up.ToString());
+	UE_LOG(LogTemp, Warning, TEXT("Right: %s"), *Right.ToString());
 	// ==================================
 
 	// Move plan forwards (with sweep so we stop when we collide with things)

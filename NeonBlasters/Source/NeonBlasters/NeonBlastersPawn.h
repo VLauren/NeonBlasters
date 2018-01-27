@@ -18,6 +18,9 @@ class ANeonBlastersPawn : public APawn
 	UPROPERTY(Category = Camera, VisibleDefaultsOnly, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	class USpringArmComponent* SpringArm;
 
+	UPROPERTY(Category = Camera, VisibleDefaultsOnly, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	class USpringArmComponent* SpringArm2;
+
 	/** Camera component that will be our viewpoint */
 	UPROPERTY(Category = Camera, VisibleDefaultsOnly, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* Camera;
@@ -73,6 +76,9 @@ private:
 
 	/** Current roll speed */
 	float CurrentRollSpeed;
+
+	float UpVal;
+	float RightVal;
 
 public:
 	/** Returns PlaneMesh subobject **/

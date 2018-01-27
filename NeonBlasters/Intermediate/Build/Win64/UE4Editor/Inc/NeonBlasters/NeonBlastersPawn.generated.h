@@ -62,6 +62,7 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(ANeonBlastersPawn); \
 #define NeonBlasters_Source_NeonBlasters_NeonBlastersPawn_h_11_PRIVATE_PROPERTY_OFFSET \
 	FORCEINLINE static uint32 __PPO__PlaneMesh() { return STRUCT_OFFSET(ANeonBlastersPawn, PlaneMesh); } \
 	FORCEINLINE static uint32 __PPO__SpringArm() { return STRUCT_OFFSET(ANeonBlastersPawn, SpringArm); } \
+	FORCEINLINE static uint32 __PPO__SpringArm2() { return STRUCT_OFFSET(ANeonBlastersPawn, SpringArm2); } \
 	FORCEINLINE static uint32 __PPO__Camera() { return STRUCT_OFFSET(ANeonBlastersPawn, Camera); } \
 	FORCEINLINE static uint32 __PPO__Acceleration() { return STRUCT_OFFSET(ANeonBlastersPawn, Acceleration); } \
 	FORCEINLINE static uint32 __PPO__TurnSpeed() { return STRUCT_OFFSET(ANeonBlastersPawn, TurnSpeed); } \

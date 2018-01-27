@@ -40,6 +40,16 @@ ANeonBlastersPawn::ANeonBlastersPawn()
 	Camera->SetupAttachment(SpringArm, USpringArmComponent::SocketName);	// Attach the camera
 	Camera->bUsePawnControlRotation = false; // Don't rotate camera with controller
 
+
+	SpringArm2 = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm1"));
+	SpringArm2->SetupAttachment(RootComponent);	// Attach SpringArm to RootComponent
+	SpringArm2->TargetArmLength = 160.0f; // The camera follows at this distance behind the character	
+	SpringArm2->SocketOffset = FVector(0.f, 0.f, 60.f);
+	SpringArm2->bEnableCameraLag = false;	// Do not allow camera to lag
+	SpringArm2->CameraLagSpeed = 15.f;
+
+
+
 	// Set handling parameters
 	Acceleration = 500.f;
 	TurnSpeed = 50.f;
@@ -50,7 +60,14 @@ ANeonBlastersPawn::ANeonBlastersPawn()
 
 void ANeonBlastersPawn::Tick(float DeltaSeconds)
 {
-	const FVector LocalMove = FVector(CurrentForwardSpeed * DeltaSeconds, 0.f, 0.f);
+	FVector LocalMove = FVector(CurrentForwardSpeed * DeltaSeconds, 0.f, 0.f);
+
+	// ==================================
+
+	LocalMove += GetActorUpVector() * UpVal * 1000 * DeltaSeconds;
+	LocalMove += GetActorRightVector() * RightVal * 1000 * DeltaSeconds;
+
+	// ==================================
 
 	// Move plan forwards (with sweep so we stop when we collide with things)
 	AddActorLocalOffset(LocalMove, true);
@@ -104,30 +121,34 @@ void ANeonBlastersPawn::ThrustInput(float Val)
 void ANeonBlastersPawn::MoveUpInput(float Val)
 {
 	// Target pitch speed is based in input
-	float TargetPitchSpeed = (Val * TurnSpeed * -1.f);
+	// float TargetPitchSpeed = (Val * TurnSpeed * -1.f);
 
 	// When steering, we decrease pitch slightly
-	TargetPitchSpeed += (FMath::Abs(CurrentYawSpeed) * -0.2f);
+	// TargetPitchSpeed += (FMath::Abs(CurrentYawSpeed) * -0.2f);
 
 	// Smoothly interpolate to target pitch speed
-	CurrentPitchSpeed = FMath::FInterpTo(CurrentPitchSpeed, TargetPitchSpeed, GetWorld()->GetDeltaSeconds(), 2.f);
+	// CurrentPitchSpeed = FMath::FInterpTo(CurrentPitchSpeed, TargetPitchSpeed, GetWorld()->GetDeltaSeconds(), 2.f);
+
+	UpVal = Val;
 }
 
 void ANeonBlastersPawn::MoveRightInput(float Val)
 {
 	// Target yaw speed is based on input
-	float TargetYawSpeed = (Val * TurnSpeed);
+	// float TargetYawSpeed = (Val * TurnSpeed);
 
 	// Smoothly interpolate to target yaw speed
-	CurrentYawSpeed = FMath::FInterpTo(CurrentYawSpeed, TargetYawSpeed, GetWorld()->GetDeltaSeconds(), 2.f);
+	// CurrentYawSpeed = FMath::FInterpTo(CurrentYawSpeed, TargetYawSpeed, GetWorld()->GetDeltaSeconds(), 2.f);
 
 	// Is there any left/right input?
-	const bool bIsTurning = FMath::Abs(Val) > 0.2f;
+	// const bool bIsTurning = FMath::Abs(Val) > 0.2f;
 
 	// If turning, yaw value is used to influence roll
 	// If not turning, roll to reverse current roll value.
-	float TargetRollSpeed = bIsTurning ? (CurrentYawSpeed * 0.5f) : (GetActorRotation().Roll * -2.f);
+	// float TargetRollSpeed = bIsTurning ? (CurrentYawSpeed * 0.5f) : (GetActorRotation().Roll * -2.f);
 
 	// Smoothly interpolate roll speed
-	CurrentRollSpeed = FMath::FInterpTo(CurrentRollSpeed, TargetRollSpeed, GetWorld()->GetDeltaSeconds(), 2.f);
+	// CurrentRollSpeed = FMath::FInterpTo(CurrentRollSpeed, TargetRollSpeed, GetWorld()->GetDeltaSeconds(), 2.f);
+
+	RightVal = Val;
 }

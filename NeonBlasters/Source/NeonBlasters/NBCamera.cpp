@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "NBCamera.h"
-
+#include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
 
 // Sets default values for this component's properties
 UNBCamera::UNBCamera()
@@ -19,8 +19,7 @@ void UNBCamera::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// ...
-	
+	Camera = GetOwner();
 }
 
 
@@ -29,6 +28,8 @@ void UNBCamera::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	// ...
+	APlayerController* Player = UGameplayStatics::GetPlayerController(this, 0);
+	if (Player)
+		Player->SetViewTarget(Camera);
 }
 

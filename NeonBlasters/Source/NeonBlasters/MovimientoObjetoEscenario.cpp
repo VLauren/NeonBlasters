@@ -20,7 +20,6 @@ void UMovimientoObjetoEscenario::BeginPlay()
 	Super::BeginPlay();
 
 	// ...
-	
 }
 
 
@@ -29,7 +28,10 @@ void UMovimientoObjetoEscenario::TickComponent(float DeltaTime, ELevelTick TickT
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	// ...
+	FVector LocalMove = FVector(0, 0, -1000 * DeltaTime);
+
+	// GetOwner()->AddActorLocalOffset(LocalMove, true);
+	UE_LOG(LogTemp, Warning, TEXT("KE %s"), *LocalMove.ToString());
 
 }
 

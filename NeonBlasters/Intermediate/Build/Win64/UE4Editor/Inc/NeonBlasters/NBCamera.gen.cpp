@@ -17,6 +17,7 @@ void EmptyLinkFunctionForGeneratedCodeNBCamera() {}
 	NEONBLASTERS_API UClass* Z_Construct_UClass_UNBCamera();
 	ENGINE_API UClass* Z_Construct_UClass_UActorComponent();
 	UPackage* Z_Construct_UPackage__Script_NeonBlasters();
+	ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
 // End Cross Module References
 	void UNBCamera::StaticRegisterNativesUNBCamera()
 	{
@@ -42,6 +43,16 @@ void EmptyLinkFunctionForGeneratedCodeNBCamera() {}
 				{ "ModuleRelativePath", "NBCamera.h" },
 			};
 #endif
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Camera_MetaData[] = {
+				{ "Category", "NBCamera" },
+				{ "ModuleRelativePath", "NBCamera.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_Camera = { UE4CodeGen_Private::EPropertyClass::Object, "Camera", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(UNBCamera, Camera), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(NewProp_Camera_MetaData, ARRAY_COUNT(NewProp_Camera_MetaData)) };
+			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_Camera,
+			};
 			static const FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
 				TCppClassTypeTraits<UNBCamera>::IsAbstract,
 			};
@@ -50,7 +61,7 @@ void EmptyLinkFunctionForGeneratedCodeNBCamera() {}
 				DependentSingletons, ARRAY_COUNT(DependentSingletons),
 				0x00B00080u,
 				nullptr, 0,
-				nullptr, 0,
+				PropPointers, ARRAY_COUNT(PropPointers),
 				nullptr,
 				&StaticCppClassTypeInfo,
 				nullptr, 0,
@@ -60,7 +71,7 @@ void EmptyLinkFunctionForGeneratedCodeNBCamera() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(UNBCamera, 3661035750);
+	IMPLEMENT_CLASS(UNBCamera, 3830353795);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_UNBCamera(Z_Construct_UClass_UNBCamera, &UNBCamera::StaticClass, TEXT("/Script/NeonBlasters"), TEXT("UNBCamera"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(UNBCamera);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

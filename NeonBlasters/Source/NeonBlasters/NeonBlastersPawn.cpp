@@ -9,6 +9,8 @@
 #include "Engine/World.h"
 #include "Engine/StaticMesh.h"
 
+ANeonBlastersPawn* ANeonBlastersPawn::instance;
+
 ANeonBlastersPawn::ANeonBlastersPawn()
 {
 	// Structure to hold one-time initialization
@@ -50,13 +52,14 @@ ANeonBlastersPawn::ANeonBlastersPawn()
 	SpringArm2->bEnableCameraLag = false;	// Do not allow camera to lag
 	SpringArm2->CameraLagSpeed = 15.f;
 
-
+	instance = this;
 }
 
 void ANeonBlastersPawn::Tick(float DeltaSeconds)
 {
 	FVector LocalMove = FVector(0,0,0);
 
+	// ANeonBlastersPawn::instance = this;
 	// ==================================
 
 	FVector Up = GetActorUpVector() * UpVal * 1000 * DeltaSeconds;
@@ -103,3 +106,10 @@ void ANeonBlastersPawn::MoveRightInput(float Val)
 {
 	RightVal = Val;
 }
+
+
+// ANeonBlastersPawn* ANeonBlastersPawn::GetInstance()
+// {
+	// return instance;
+// }
+

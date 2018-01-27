@@ -48,13 +48,6 @@ private:
 	float RightVal;
 
 public:
-
-	UPROPERTY(EditAnywhere)
-		TSubclassOf<class UStaticMesh> Test1;
-
-	UPROPERTY(EditAnywhere)
-		UStaticMeshComponent* Test2;
-
-	UPROPERTY(EditAnywhere)
-		TSubclassOf<class UStaticMeshComponent> Test3;
+	static ANeonBlastersPawn* instance;
+	// static ANeonBlastersPawn* GetInstance();
 };

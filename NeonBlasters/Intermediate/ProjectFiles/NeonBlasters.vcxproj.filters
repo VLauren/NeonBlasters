@@ -4,7 +4,7 @@
 	<ItemGroup>
 		<None Include="..\..\NeonBlasters.uproject" />
 		<Filter Include="Source">
-			<UniqueIdentifier>{C606F4F3-10ED-471D-AC0D-7909F54AD4FD}</UniqueIdentifier>
+			<UniqueIdentifier>{188CDC92-0905-4425-ADA1-84008C24B8F0}</UniqueIdentifier>
 		</Filter>
 		<None Include="..\..\Source\NeonBlasters.Target.cs">
 			<Filter>Source</Filter>
@@ -13,7 +13,7 @@
 			<Filter>Source</Filter>
 		</None >
 		<Filter Include="Config">
-			<UniqueIdentifier>{FA6D89E2-B3F5-4E97-A0E7-FE37F873DA7A}</UniqueIdentifier>
+			<UniqueIdentifier>{A90CB0F1-85E6-4246-BBBA-C688F64EAC57}</UniqueIdentifier>
 		</Filter>
 		<None Include="..\..\Config\DefaultEditor.ini">
 			<Filter>Config</Filter>
@@ -31,7 +31,7 @@
 			<Filter>Config</Filter>
 		</None >
 		<Filter Include="Source\NeonBlasters">
-			<UniqueIdentifier>{CDB11B0B-6057-4070-8A09-0616CB4CF9EB}</UniqueIdentifier>
+			<UniqueIdentifier>{72E09F08-25F4-4D92-87CF-3F2F28E21BD3}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="..\..\Source\NeonBlasters\MovimientoObjetoEscenario.cpp">
 			<Filter>Source\NeonBlasters</Filter>
@@ -64,6 +64,18 @@
 			<Filter>Source\NeonBlasters</Filter>
 		</ClCompile >
 		<ClInclude Include="..\..\Source\NeonBlasters\NeonBlastersPawn.h">
+			<Filter>Source\NeonBlasters</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\NeonBlasters\NeonBlastersPawn2.cpp">
+			<Filter>Source\NeonBlasters</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\NeonBlasters\NeonBlastersPawn2.h">
+			<Filter>Source\NeonBlasters</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\NeonBlasters\Spawner.cpp">
+			<Filter>Source\NeonBlasters</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\NeonBlasters\Spawner.h">
 			<Filter>Source\NeonBlasters</Filter>
 		</ClInclude >
 	</ItemGroup>

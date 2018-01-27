@@ -3,6 +3,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
+#include "Disparador.h"
 #include "NeonBlastersPawn.generated.h"
 
 UCLASS(Config=Game)
@@ -42,10 +43,14 @@ protected:
 	/** Bound to the horizontal axis */
 	void MoveRightInput(float Val);
 
+	void Fire();
+
 private:
 
 	float UpVal;
 	float RightVal;
+
+	UDisparador* disparador;
 
 public:
 	static ANeonBlastersPawn* instance;

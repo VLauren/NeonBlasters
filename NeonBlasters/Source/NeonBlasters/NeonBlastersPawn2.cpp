@@ -11,6 +11,8 @@
 #include "DrawDebugHelpers.h"
 #include "NeonBlastersPawn.h"
 
+ANeonBlastersPawn2* ANeonBlastersPawn2::instance;
+
 // Sets default values
 ANeonBlastersPawn2::ANeonBlastersPawn2()
 {
@@ -34,7 +36,7 @@ ANeonBlastersPawn2::ANeonBlastersPawn2()
 	SpringArm2->bEnableCameraLag = false;	// Do not allow camera to lag
 	SpringArm2->CameraLagSpeed = 15.f;
 
-	// instance = this;
+	instance = this;
 }
 
 void ANeonBlastersPawn2::Tick(float DeltaSeconds)
@@ -64,7 +66,7 @@ void ANeonBlastersPawn2::Tick(float DeltaSeconds)
 	FVector end = start + AimRotation.RotateVector(FVector(0, 10000, 0));
 
 	FVector v = ANeonBlastersPawn::instance->GetActorLocation() - GetActorLocation();
-	UE_LOG(LogTemp, Warning, TEXT(" V: %s"), *v.ToString());
+	// UE_LOG(LogTemp, Warning, TEXT(" V: %s"), *v.ToString());
 
 	FVector v2 = end - start;
 
@@ -74,7 +76,7 @@ void ANeonBlastersPawn2::Tick(float DeltaSeconds)
 	angle2 = FMath::RadiansToDegrees(angle2);
 
 	// UE_LOG(LogTemp, Warning, TEXT(" Angle: %f --- Angle2: %f"), angle, angle2);
-	UE_LOG(LogTemp, Warning, TEXT(" Dif: %f"), FGenericPlatformMath::Abs(angle - angle2));
+	// UE_LOG(LogTemp, Warning, TEXT(" Dif: %f"), FGenericPlatformMath::Abs(angle - angle2));
 
 
 	FColor col = FColor(255, 0, 0);

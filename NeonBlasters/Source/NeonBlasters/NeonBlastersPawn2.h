@@ -49,5 +49,6 @@ public:
 	float RightVal;
 	FRotator AimRotation = FRotator(0,0,45);
 	
-	// static ANeonBlastersPawn2* instance;
+
+	static ANeonBlastersPawn2* instance;
 };

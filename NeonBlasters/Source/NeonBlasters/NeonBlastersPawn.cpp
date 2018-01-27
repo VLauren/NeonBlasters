@@ -95,6 +95,7 @@ void ANeonBlastersPawn::SetupPlayerInputComponent(class UInputComponent* PlayerI
 	// Bind our control axis' to callback functions
 	PlayerInputComponent->BindAxis("MoveUp", this, &ANeonBlastersPawn::MoveUpInput);
 	PlayerInputComponent->BindAxis("MoveRight", this, &ANeonBlastersPawn::MoveRightInput);
+	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &ANeonBlastersPawn::Fire);
 }
 
 void ANeonBlastersPawn::MoveUpInput(float Val)
@@ -105,6 +106,12 @@ void ANeonBlastersPawn::MoveUpInput(float Val)
 void ANeonBlastersPawn::MoveRightInput(float Val)
 {
 	RightVal = Val;
+}
+
+void ANeonBlastersPawn::Fire()
+{
+	disparador = FindComponentByClass<UDisparador>();
+	disparador->Disparar();
 }
 
 

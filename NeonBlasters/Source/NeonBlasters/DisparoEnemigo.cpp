@@ -6,19 +6,6 @@ UDisparoEnemigo::UDisparoEnemigo()
 {
 	PrimaryComponentTick.bCanEverTick = true;
 
-	if (ANeonBlastersPawn::instance)
-	{
-		/*
-		FVector objPos = ANeonBlastersPawn::instance->GetActorLocation();
-		if (FMath::FRand() < 0.5f)
-		{
-			objPos = ANeonBlastersPawn2::instance->GetActorLocation();
-		}
-
-		dir = objPos - GetOwner()->GetActorLocation();
-		dir.Normalize();
-		*/
-	}
 }
 
 void UDisparoEnemigo::BeginPlay()
@@ -30,10 +17,20 @@ void UDisparoEnemigo::TickComponent(float DeltaTime, ELevelTick TickType, FActor
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	/*
+	if (!initialized)
+	{
+		FVector objPos = ANeonBlastersPawn::instance->GetActorLocation();
+		if (FMath::FRand() < 0.5f)
+		{
+			objPos = ANeonBlastersPawn2::instance->GetActorLocation();
+		}
+
+		dir = objPos - GetOwner()->GetActorLocation();
+		dir.Normalize();
+		initialized = true;
+	}
+
 	FVector Mov = dir * VEL * DeltaTime;
 	GetOwner()->AddActorLocalOffset(Mov);
-	*/
-
 }
 

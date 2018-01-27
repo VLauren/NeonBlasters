@@ -4,7 +4,7 @@
 	<ItemGroup>
 		<None Include="..\..\NeonBlasters.uproject" />
 		<Filter Include="Source">
-			<UniqueIdentifier>{EE8B0DD2-C4C1-4ECC-B677-0F06AC31F84A}</UniqueIdentifier>
+			<UniqueIdentifier>{C606F4F3-10ED-471D-AC0D-7909F54AD4FD}</UniqueIdentifier>
 		</Filter>
 		<None Include="..\..\Source\NeonBlasters.Target.cs">
 			<Filter>Source</Filter>
@@ -13,7 +13,7 @@
 			<Filter>Source</Filter>
 		</None >
 		<Filter Include="Config">
-			<UniqueIdentifier>{8B525559-52EB-49B5-B4AD-8BDA29AF4B97}</UniqueIdentifier>
+			<UniqueIdentifier>{FA6D89E2-B3F5-4E97-A0E7-FE37F873DA7A}</UniqueIdentifier>
 		</Filter>
 		<None Include="..\..\Config\DefaultEditor.ini">
 			<Filter>Config</Filter>
@@ -31,8 +31,20 @@
 			<Filter>Config</Filter>
 		</None >
 		<Filter Include="Source\NeonBlasters">
-			<UniqueIdentifier>{DA16D2EB-78B0-45DF-90FC-2D0C30309F1D}</UniqueIdentifier>
+			<UniqueIdentifier>{CDB11B0B-6057-4070-8A09-0616CB4CF9EB}</UniqueIdentifier>
 		</Filter>
+		<ClCompile Include="..\..\Source\NeonBlasters\MovimientoObjetoEscenario.cpp">
+			<Filter>Source\NeonBlasters</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\NeonBlasters\MovimientoObjetoEscenario.h">
+			<Filter>Source\NeonBlasters</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\NeonBlasters\NBCamera.cpp">
+			<Filter>Source\NeonBlasters</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\NeonBlasters\NBCamera.h">
+			<Filter>Source\NeonBlasters</Filter>
+		</ClInclude >
 		<None Include="..\..\Source\NeonBlasters\NeonBlasters.Build.cs">
 			<Filter>Source\NeonBlasters</Filter>
 		</None >

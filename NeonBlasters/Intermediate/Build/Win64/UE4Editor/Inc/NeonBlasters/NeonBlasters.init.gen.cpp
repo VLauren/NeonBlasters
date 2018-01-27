@@ -19,8 +19,8 @@ void EmptyLinkFunctionForGeneratedCodeNeonBlasters_init() {}
 			static const UE4CodeGen_Private::FPackageParams PackageParams = {
 				"/Script/NeonBlasters",
 				PKG_CompiledIn | 0x00000000,
-				0xFA82DBEE,
-				0x6B3CC9BA,
+				0x734ED7D4,
+				0xFF8870B6,
 				nullptr, 0,
 				METADATA_PARAMS(nullptr, 0)
 			};

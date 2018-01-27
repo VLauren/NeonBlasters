@@ -21,9 +21,6 @@ class ANeonBlastersPawn : public APawn
 	UPROPERTY(Category = Camera, VisibleDefaultsOnly, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	class USpringArmComponent* SpringArm2;
 
-	/** Camera component that will be our viewpoint */
-	UPROPERTY(Category = Camera, VisibleDefaultsOnly, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-	class UCameraComponent* Camera;
 public:
 	ANeonBlastersPawn();
 
@@ -37,9 +34,6 @@ protected:
 	// Begin APawn overrides
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override; // Allows binding actions/axes to functions
 	// End APawn overrides
-
-	/** Bound to the thrust axis */
-	void ThrustInput(float Val);
 	
 	/** Bound to the vertical axis */
 	void MoveUpInput(float Val);
@@ -49,42 +43,7 @@ protected:
 
 private:
 
-	/** How quickly forward speed changes */
-	UPROPERTY(Category=Plane, EditAnywhere)
-	float Acceleration;
-
-	/** How quickly pawn can steer */
-	UPROPERTY(Category=Plane, EditAnywhere)
-	float TurnSpeed;
-
-	/** Max forward speed */
-	UPROPERTY(Category = Pitch, EditAnywhere)
-	float MaxSpeed;
-
-	/** Min forward speed */
-	UPROPERTY(Category=Yaw, EditAnywhere)
-	float MinSpeed;
-
-	/** Current forward speed */
-	float CurrentForwardSpeed;
-
-	/** Current yaw speed */
-	float CurrentYawSpeed;
-
-	/** Current pitch speed */
-	float CurrentPitchSpeed;
-
-	/** Current roll speed */
-	float CurrentRollSpeed;
-
 	float UpVal;
 	float RightVal;
 
-public:
-	/** Returns PlaneMesh subobject **/
-	FORCEINLINE class UStaticMeshComponent* GetPlaneMesh() const { return PlaneMesh; }
-	/** Returns SpringArm subobject **/
-	FORCEINLINE class USpringArmComponent* GetSpringArm() const { return SpringArm; }
-	/** Returns Camera subobject **/
-	FORCEINLINE class UCameraComponent* GetCamera() const { return Camera; }
 };

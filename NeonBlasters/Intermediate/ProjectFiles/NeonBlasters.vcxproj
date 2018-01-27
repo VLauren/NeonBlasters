@@ -415,6 +415,10 @@
 		<None Include="..\..\Config\DefaultEngine.ini" />
 		<None Include="..\..\Config\DefaultGame.ini" />
 		<None Include="..\..\Config\DefaultInput.ini" />
+		<ClCompile Include="..\..\Source\NeonBlasters\MovimientoObjetoEscenario.cpp" />
+		<ClInclude Include="..\..\Source\NeonBlasters\MovimientoObjetoEscenario.h" />
+		<ClCompile Include="..\..\Source\NeonBlasters\NBCamera.cpp" />
+		<ClInclude Include="..\..\Source\NeonBlasters\NBCamera.h" />
 		<None Include="..\..\Source\NeonBlasters\NeonBlasters.Build.cs" />
 		<ClCompile Include="..\..\Source\NeonBlasters\NeonBlasters.cpp" />
 		<ClInclude Include="..\..\Source\NeonBlasters\NeonBlasters.h" />

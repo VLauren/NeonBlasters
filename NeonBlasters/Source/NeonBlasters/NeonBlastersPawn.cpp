@@ -36,9 +36,9 @@ ANeonBlastersPawn::ANeonBlastersPawn()
 	SpringArm->CameraLagSpeed = 15.f;
 
 	// Create camera component 
-	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera0"));
-	Camera->SetupAttachment(SpringArm, USpringArmComponent::SocketName);	// Attach the camera
-	Camera->bUsePawnControlRotation = false; // Don't rotate camera with controller
+	// Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera0"));
+	// Camera->SetupAttachment(SpringArm, USpringArmComponent::SocketName);	// Attach the camera
+	// Camera->bUsePawnControlRotation = false; // Don't rotate camera with controller
 
 
 	SpringArm2 = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm1"));
@@ -49,18 +49,11 @@ ANeonBlastersPawn::ANeonBlastersPawn()
 	SpringArm2->CameraLagSpeed = 15.f;
 
 
-
-	// Set handling parameters
-	Acceleration = 500.f;
-	TurnSpeed = 50.f;
-	MaxSpeed = 4000.f;
-	MinSpeed = 500.f;
-	CurrentForwardSpeed = 500.f;
 }
 
 void ANeonBlastersPawn::Tick(float DeltaSeconds)
 {
-	FVector LocalMove = FVector(CurrentForwardSpeed * DeltaSeconds, 0.f, 0.f);
+	FVector LocalMove = FVector();
 
 	// ==================================
 
@@ -71,15 +64,6 @@ void ANeonBlastersPawn::Tick(float DeltaSeconds)
 
 	// Move plan forwards (with sweep so we stop when we collide with things)
 	AddActorLocalOffset(LocalMove, true);
-
-	// Calculate change in rotation this frame
-	FRotator DeltaRotation(0,0,0);
-	DeltaRotation.Pitch = CurrentPitchSpeed * DeltaSeconds;
-	DeltaRotation.Yaw = CurrentYawSpeed * DeltaSeconds;
-	DeltaRotation.Roll = CurrentRollSpeed * DeltaSeconds;
-
-	// Rotate plane
-	AddActorLocalRotation(DeltaRotation);
 
 	// Call any parent class Tick implementation
 	Super::Tick(DeltaSeconds);
@@ -101,54 +85,16 @@ void ANeonBlastersPawn::SetupPlayerInputComponent(class UInputComponent* PlayerI
 	check(PlayerInputComponent);
 
 	// Bind our control axis' to callback functions
-	PlayerInputComponent->BindAxis("Thrust", this, &ANeonBlastersPawn::ThrustInput);
 	PlayerInputComponent->BindAxis("MoveUp", this, &ANeonBlastersPawn::MoveUpInput);
 	PlayerInputComponent->BindAxis("MoveRight", this, &ANeonBlastersPawn::MoveRightInput);
 }
 
-void ANeonBlastersPawn::ThrustInput(float Val)
-{
-	// Is there any input?
-	bool bHasInput = !FMath::IsNearlyEqual(Val, 0.f);
-	// If input is not held down, reduce speed
-	float CurrentAcc = bHasInput ? (Val * Acceleration) : (-0.5f * Acceleration);
-	// Calculate new speed
-	float NewForwardSpeed = CurrentForwardSpeed + (GetWorld()->GetDeltaSeconds() * CurrentAcc);
-	// Clamp between MinSpeed and MaxSpeed
-	CurrentForwardSpeed = FMath::Clamp(NewForwardSpeed, MinSpeed, MaxSpeed);
-}
-
 void ANeonBlastersPawn::MoveUpInput(float Val)
 {
-	// Target pitch speed is based in input
-	// float TargetPitchSpeed = (Val * TurnSpeed * -1.f);
-
-	// When steering, we decrease pitch slightly
-	// TargetPitchSpeed += (FMath::Abs(CurrentYawSpeed) * -0.2f);
-
-	// Smoothly interpolate to target pitch speed
-	// CurrentPitchSpeed = FMath::FInterpTo(CurrentPitchSpeed, TargetPitchSpeed, GetWorld()->GetDeltaSeconds(), 2.f);
-
 	UpVal = Val;
 }
 
 void ANeonBlastersPawn::MoveRightInput(float Val)
 {
-	// Target yaw speed is based on input
-	// float TargetYawSpeed = (Val * TurnSpeed);
-
-	// Smoothly interpolate to target yaw speed
-	// CurrentYawSpeed = FMath::FInterpTo(CurrentYawSpeed, TargetYawSpeed, GetWorld()->GetDeltaSeconds(), 2.f);
-
-	// Is there any left/right input?
-	// const bool bIsTurning = FMath::Abs(Val) > 0.2f;
-
-	// If turning, yaw value is used to influence roll
-	// If not turning, roll to reverse current roll value.
-	// float TargetRollSpeed = bIsTurning ? (CurrentYawSpeed * 0.5f) : (GetActorRotation().Roll * -2.f);
-
-	// Smoothly interpolate roll speed
-	// CurrentRollSpeed = FMath::FInterpTo(CurrentRollSpeed, TargetRollSpeed, GetWorld()->GetDeltaSeconds(), 2.f);
-
 	RightVal = Val;
 }

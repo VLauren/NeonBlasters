@@ -1,0 +1,3 @@
+C:\Users\USUARIO\Documents\NeonBlasters\NeonBlasters\Source\NeonBlasters\NeonBlasters.Build.cs
+C:\Users\USUARIO\Documents\NeonBlasters\NeonBlasters\Source\NeonBlasters.Target.cs
+C:\Users\USUARIO\Documents\NeonBlasters\NeonBlasters\Source\NeonBlastersEditor.Target.cs

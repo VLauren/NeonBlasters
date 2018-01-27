@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup>
+		<None Include="..\..\NeonBlasters.uproject" />
+		<Filter Include="Source">
+			<UniqueIdentifier>{EE8B0DD2-C4C1-4ECC-B677-0F06AC31F84A}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Source\NeonBlasters.Target.cs">
+			<Filter>Source</Filter>
+		</None >
+		<None Include="..\..\Source\NeonBlastersEditor.Target.cs">
+			<Filter>Source</Filter>
+		</None >
+		<Filter Include="Config">
+			<UniqueIdentifier>{8B525559-52EB-49B5-B4AD-8BDA29AF4B97}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Config\DefaultEditor.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultEngine.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultGame.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultInput.ini">
+			<Filter>Config</Filter>
+		</None >
+		<Filter Include="Source\NeonBlasters">
+			<UniqueIdentifier>{DA16D2EB-78B0-45DF-90FC-2D0C30309F1D}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Source\NeonBlasters\NeonBlasters.Build.cs">
+			<Filter>Source\NeonBlasters</Filter>
+		</None >
+		<ClCompile Include="..\..\Source\NeonBlasters\NeonBlasters.cpp">
+			<Filter>Source\NeonBlasters</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\NeonBlasters\NeonBlasters.h">
+			<Filter>Source\NeonBlasters</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\NeonBlasters\NeonBlastersGameMode.cpp">
+			<Filter>Source\NeonBlasters</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\NeonBlasters\NeonBlastersGameMode.h">
+			<Filter>Source\NeonBlasters</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\NeonBlasters\NeonBlastersPawn.cpp">
+			<Filter>Source\NeonBlasters</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\NeonBlasters\NeonBlastersPawn.h">
+			<Filter>Source\NeonBlasters</Filter>
+		</ClInclude >
+	</ItemGroup>
+</Project>

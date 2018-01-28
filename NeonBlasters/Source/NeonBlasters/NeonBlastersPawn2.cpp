@@ -10,6 +10,7 @@
 #include "Engine/StaticMesh.h"
 #include "DrawDebugHelpers.h"
 #include "NeonBlastersPawn.h"
+#include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
 
 ANeonBlastersPawn2* ANeonBlastersPawn2::instance;
 
@@ -38,7 +39,8 @@ ANeonBlastersPawn2::ANeonBlastersPawn2()
 
 	instance = this;
 
-	rayaco = FindComponentByClass<UParticleSystemComponent>();
+	// player = UGameplayStatics::CreatePlayer(this, 1, false);
+	// player->Possess(this);
 }
 
 void ANeonBlastersPawn2::Tick(float DeltaSeconds)
@@ -48,8 +50,8 @@ void ANeonBlastersPawn2::Tick(float DeltaSeconds)
 	// ==================================
 	// movimiento
 
-	FVector Up = GetActorUpVector() * UpVal * 600 * DeltaSeconds;
-	FVector Right = GetActorRightVector() * RightVal * 600 * DeltaSeconds;
+	FVector Up = GetActorUpVector() * UpVal * 300 * DeltaSeconds;
+	FVector Right = GetActorRightVector() * RightVal * 300 * DeltaSeconds;
 
 	LocalMove += Up;
 	LocalMove += Right;
@@ -62,7 +64,21 @@ void ANeonBlastersPawn2::Tick(float DeltaSeconds)
 	// ==================================
 	// raycast
 
-	AimRotation += FRotator(0, 0, DeltaSeconds * 90);
+	// rotacion en el tiempo
+	// AimRotation += FRotator(0, 0, DeltaSeconds * 90);
+
+	// rotacion con input
+	if(UpVal != 0 || RightVal != 0)
+	{
+		float anguloInput = FGenericPlatformMath::Atan2(-UpVal, RightVal);
+		anguloInput = FMath::RadiansToDegrees(anguloInput);
+
+		// anguloInput = FMath::Lerp(anguloInput, AimRotation.Roll, 0.01f);
+		// anguloInput = FMath::Lerp(AimRotation.Roll, anguloInput, 0.05f);
+		// AimRotation = FRotator(0, 0, anguloInput);
+		AimRotation = FMath::Lerp(AimRotation, FRotator(0, 0, anguloInput), 0.05f);
+
+	}
 
 	FVector start = GetActorLocation();
 	FVector end = start + AimRotation.RotateVector(FVector(0, 10000, 0));
@@ -88,12 +104,22 @@ void ANeonBlastersPawn2::Tick(float DeltaSeconds)
 		col = FColor(0, 255, 0);
 	}
 
-	DrawDebugLine(GetWorld(), start, end, col,
-		false, 0, 0, 3);
+	// DrawDebugLine(GetWorld(), start, end, col,
+		// false, 0, 0, 3);
 
 
-	rayaco->SetBeamSourcePoint(0, start, 0);
-	rayaco->SetBeamEndPoint(0, end);
+	rayaco = FindComponentByClass<UParticleSystemComponent>();
+	if (rayaco)
+	{
+
+		// UE_LOG(LogTemp, Warning, TEXT("ke");
+		rayaco->SetBeamSourcePoint(0, start, 0);
+
+		if(beam)
+			rayaco->SetBeamEndPoint(0, end);
+		else
+			rayaco->SetBeamEndPoint(0, start);
+	}
 
 
 	// PASO DE ESTA MIERDA
@@ -130,6 +156,12 @@ void ANeonBlastersPawn2::NotifyHit(class UPrimitiveComponent* MyComp, class AAct
 	SetActorRotation(FQuat::Slerp(CurrentRotation.Quaternion(), HitNormal.ToOrientationQuat(), 0.025f));
 }
 
+void ANeonBlastersPawn2::BeginPlay()
+{
+	player = UGameplayStatics::CreatePlayer(this, 1, false);
+	// player->Possess(this);
+}
+
 
 void ANeonBlastersPawn2::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
 {
@@ -139,6 +171,9 @@ void ANeonBlastersPawn2::SetupPlayerInputComponent(class UInputComponent* Player
 	// Bind our control axis' to callback functions
 	PlayerInputComponent->BindAxis("MoveUp", this, &ANeonBlastersPawn2::MoveUpInput);
 	PlayerInputComponent->BindAxis("MoveRight", this, &ANeonBlastersPawn2::MoveRightInput);
+
+	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &ANeonBlastersPawn2::Press);
+	PlayerInputComponent->BindAction("Fire", IE_Released, this, &ANeonBlastersPawn2::Release);
 }
 
 void ANeonBlastersPawn2::MoveUpInput(float Val)
@@ -149,5 +184,15 @@ void ANeonBlastersPawn2::MoveUpInput(float Val)
 void ANeonBlastersPawn2::MoveRightInput(float Val)
 {
 	RightVal = Val;
+}
+
+void ANeonBlastersPawn2::Press()
+{
+	beam = true;
+}
+
+void ANeonBlastersPawn2::Release()
+{
+	beam = false;
 }
 

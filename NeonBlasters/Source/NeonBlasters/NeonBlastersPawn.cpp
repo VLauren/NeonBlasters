@@ -8,6 +8,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Engine/World.h"
 #include "Engine/StaticMesh.h"
+#include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
 
 ANeonBlastersPawn* ANeonBlastersPawn::instance;
 
@@ -53,6 +54,13 @@ ANeonBlastersPawn::ANeonBlastersPawn()
 	SpringArm2->CameraLagSpeed = 15.f;
 
 	instance = this;
+
+}
+
+void ANeonBlastersPawn::BeginPlay()
+{
+	player = UGameplayStatics::CreatePlayer(this, 0, false);
+	// player->Possess(this);
 }
 
 void ANeonBlastersPawn::Tick(float DeltaSeconds)

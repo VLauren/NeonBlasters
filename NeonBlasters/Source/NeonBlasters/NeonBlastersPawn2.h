@@ -4,8 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
-#include "NeonBlastersPawn2.generated.h"
 #include "Runtime/Engine/Classes/Particles/ParticleSystemComponent.h"
+#include "NeonBlastersPawn2.generated.h"
 
 UCLASS(Config=Game)
 class NEONBLASTERS_API ANeonBlastersPawn2 : public APawn
@@ -30,6 +30,7 @@ public:
 	// Begin AActor overrides
 	virtual void Tick(float DeltaSeconds) override;
 	virtual void NotifyHit(class UPrimitiveComponent* MyComp, class AActor* Other, class UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit) override;
+	virtual void BeginPlay();
 	// End AActor overrides
 
 protected:
@@ -43,6 +44,8 @@ protected:
 	/** Bound to the horizontal axis */
 	void MoveRightInput(float Val);
 
+	void Press();
+	void Release();
 
 public:	
 
@@ -50,8 +53,12 @@ public:
 	float RightVal;
 	FRotator AimRotation = FRotator(0,0,45);
 
+	bool beam = false;
+
 	static ANeonBlastersPawn2* instance;
 
 	UParticleSystemComponent* rayaco;
+
+	APlayerController* player;
 
 };

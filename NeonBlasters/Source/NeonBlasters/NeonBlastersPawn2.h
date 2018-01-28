@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "NeonBlastersPawn2.generated.h"
+#include "Runtime/Engine/Classes/Particles/ParticleSystemComponent.h"
 
 UCLASS(Config=Game)
 class NEONBLASTERS_API ANeonBlastersPawn2 : public APawn
@@ -48,7 +49,9 @@ public:
 	float UpVal;
 	float RightVal;
 	FRotator AimRotation = FRotator(0,0,45);
-	
 
 	static ANeonBlastersPawn2* instance;
+
+	UParticleSystemComponent* rayaco;
+
 };

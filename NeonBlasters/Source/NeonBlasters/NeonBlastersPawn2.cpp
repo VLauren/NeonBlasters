@@ -37,6 +37,8 @@ ANeonBlastersPawn2::ANeonBlastersPawn2()
 	SpringArm2->CameraLagSpeed = 15.f;
 
 	instance = this;
+
+	rayaco = FindComponentByClass<UParticleSystemComponent>();
 }
 
 void ANeonBlastersPawn2::Tick(float DeltaSeconds)
@@ -46,8 +48,8 @@ void ANeonBlastersPawn2::Tick(float DeltaSeconds)
 	// ==================================
 	// movimiento
 
-	FVector Up = GetActorUpVector() * UpVal * 1000 * DeltaSeconds;
-	FVector Right = GetActorRightVector() * RightVal * 1000 * DeltaSeconds;
+	FVector Up = GetActorUpVector() * UpVal * 600 * DeltaSeconds;
+	FVector Right = GetActorRightVector() * RightVal * 600 * DeltaSeconds;
 
 	LocalMove += Up;
 	LocalMove += Right;
@@ -90,6 +92,8 @@ void ANeonBlastersPawn2::Tick(float DeltaSeconds)
 		false, 0, 0, 3);
 
 
+	rayaco->SetBeamSourcePoint(0, start, 0);
+	rayaco->SetBeamEndPoint(0, end);
 
 
 	// PASO DE ESTA MIERDA

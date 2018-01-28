@@ -26,10 +26,6 @@ public:
 
 	static USonido* instance;
 
-
-	UPROPERTY(EditAnywhere)
-		USoundBase* sonidoTest;
-
 	UPROPERTY(EditAnywhere)
 		TArray<USoundBase*> sonidos;
 

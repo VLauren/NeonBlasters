@@ -16,7 +16,7 @@ void USonido::BeginPlay()
 {
 	Super::BeginPlay();
 
-	UGameplayStatics::PlaySound2D(this, sonidoTest);
+	Play(0);
 }
 
 
@@ -28,7 +28,7 @@ void USonido::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponen
 
 void USonido::Play(int indice)
 {
-	if (instance->sonidos[indice])
+	if (instance && instance->sonidos[indice])
 		UGameplayStatics::PlaySound2D(instance, instance->sonidos[indice]);
 }
 
